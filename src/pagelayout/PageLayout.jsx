@@ -3,13 +3,14 @@ import Footer from "../components/Footer";
 import HeroCard from "../components/HeroCard";
 import AddEvent from "../components/AddEvent";
 
-export default function PageLayout ({}) {
+export default function PageLayout ({ children }) {
 
   return(
     <main>
       <Header />
       <AddEvent />
       <HeroCard />
+      {children}
       <Footer />
     </main>
   )

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Modal, Button } from "react";
 
-export default function AddEvent ({ setEvent }) {
+export default function AddEvent ({ setShowEvent }) {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [link, setLink] = useState("");
@@ -14,44 +14,18 @@ export default function AddEvent ({ setEvent }) {
   const [timeEnd, setTimeEnd] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  const handleAddEvent = (e) => {
-    e.preventDefault();
-
-    fetch("https://final-project-api-lancheros.web.app", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ name, type, link, participants, location, address, dateStart, dateEnd, timeStart, timeEnd }) ,
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-      if (data.message) {
-        alert(data.message);
-        return;
-      }
-      setEvent(data);
-      setShowModal(false);
-      setName("");
-      setType("");
-      setLink("");
-      setParticipants("");
-      setLocation("");
-      setAddress("");
-      setDateStart("");
-      setDateEnd("");
-      setTimeStart("");
-      setTimeEnd("");
-    })
-    .catch(alert);
-  };
-
-  const handleClose = () => setShowModal (false);
-  const handleOpen = () => setShowModal (true);
-}
+  // Fetch the events
+  useEffect(() => {
+    fetch(`https://final-project-api-lancheros.web.app/events`)
+      .then((res) => res.json())
+      .then((data) => {
+        setName(data);
+        console.log("name:", data);
+      })
+      .catch(alert);
+  }, [])
 
 
-  <>
-  <button className="add-event d-flex"
-    /*onClick={handleShow}>Create A New Event*/ />
-  </>
+};
+
+
