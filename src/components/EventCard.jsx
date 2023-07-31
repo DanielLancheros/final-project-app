@@ -5,6 +5,7 @@ export default function EventCard({ cardInfo }){
 
 
 return (
+  
   <section className="flex flex-row flex-wrap  w-[90%] mx-auto justify-center">
 { cardInfo.map((cardInfo) => (
  <div className=" p-6 mb-10 mx-7 md:w-[23%] w-5/12 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
