@@ -12,14 +12,14 @@ export default function HeroCard ({events, setEvents, setCardInfo}) {
     const eventName = e.target.event_name.value
     const eventLocation = e.target.event_location.value
     const eventAddress = e.target.event_address.value
-    const eventStart = e.target.event_start.value
+    const eventDate = e.target.event_Date.value
     const eventEnd = e.target.event_end.value
     const eventParticipants = e.target.number_participants.value
     const eventLink = e.target.link_url.value
 
     const newEvent = {
       name: eventName,
-      date: eventStart,
+      date: eventDate,
       location: eventLocation
     }
 
@@ -79,8 +79,8 @@ export default function HeroCard ({events, setEvents, setCardInfo}) {
   </div>
   <div class="grid md:grid-cols-2 md:gap-6">
     <div class="relative z-0 w-full mb-6 group">
-        <input type="datetime-local" name="event_start" id="event_start" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="event_start" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Event Start / Date, Time</label>
+        <input type="date" name="event_Date" id="event_Date" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="event_Date" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date</label>
     </div>
     <div class="relative z-0 w-full mb-6 group">
         <input type="datetime-local" name="event_end" id="event_end" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
