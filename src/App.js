@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import './styles/App.css';
 import PageLayout from './pagelayout/PageLayout';
 import EventCard from "./components/EventCard";
+import CreateEventCard from "./components/CreateEventCard";
+import './styles/App.css';
 
 function App() {
   const [cardInfo, setCardInfo] =  useState()
@@ -17,14 +18,13 @@ function App() {
   }, [])
   return (
     <>
-    <PageLayout>
-    <h1>Final Project</h1>
+    <PageLayout >
+    <CreateEventCard setCardInfo={setCardInfo}/>
     {!cardInfo
     ? <p className="text-slate-800 text-3xl">Loading</p>
     : <EventCard cardInfo={cardInfo} />
     }
-    
-    </PageLayout>
+    </PageLayout >
     </>
   )
 }
