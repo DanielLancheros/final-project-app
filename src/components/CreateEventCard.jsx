@@ -7,16 +7,24 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
     setShowEventLocation(inputValue.length > 0);
   };
 
-  const [eventData, setEventData] = useState({})
+  const [eventData, setEventData] = useState({});
 
   const updateForm = (e) => {
-    setEventData({...eventData, [e.target.name]: e.target.value})
-  }
+    setEventData({ ...eventData, [e.target.name]: e.target.value });
+  };
 
   const AddEvent = (e) => {
     e.preventDefault(); // this prevents form info from going into URL
-    const {event_name, event_date, event_location, event_time, event_address, number_participants, link_url } = eventData
-   
+    const {
+      event_name,
+      event_date,
+      event_location,
+      event_time,
+      event_address,
+      number_participants,
+      link_url,
+    } = eventData;
+
     const newEvent = {
       name: event_name,
       date: event_date,
@@ -24,7 +32,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
       location: event_location,
       address: event_address,
       participants: number_participants,
-      url: link_url
+      url: link_url,
     };
 
     fetch(`https://final-project-api-lancheros.web.app/events`, {
@@ -36,24 +44,26 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCardInfo(data)
+        setCardInfo(data);
       })
-      .finally (() => { setEventData()
-      e.target.event_name.value=""
-      e.target.event_date.value=""
-      e.target.event_time.value=""
-      e.target.event_location.value=""
-      e.target.event_address.value=""
-      e.target.number_participants.value=""
-      e.target.link_url.value=""
-      alert("Your event has been added below")
-    })
+      .finally(() => {
+        setEventData();
+        e.target.event_name.value = "";
+        e.target.event_date.value = "";
+        e.target.event_time.value = "";
+        e.target.event_location.value = "";
+        e.target.event_address.value = "";
+        e.target.number_participants.value = "";
+        e.target.link_url.value = "";
+        alert("Your event has been added below");
+      })
 
       .catch((err) => alert(err));
   };
 
   return (
     <section className="flex flex-row flex-wrap w-[90%] mx-auto justify-end">
+      <div className="bg-[url('../../public/keep_up.gif')] w-full p-5 my-7 bg-no-repeat bg-cover"> 
       <div className="max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Create your next event for FREE
@@ -66,7 +76,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
         <form onSubmit={AddEvent}>
           <div class="relative z-0 w-full mb-6 group">
             <input
-              onChange ={updateForm}
+              onChange={updateForm}
               type="text"
               name="event_name"
               id="event_name"
@@ -85,7 +95,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
 
           <div class="relative z-0 w-full mb-6 group">
             <input
-              onChange ={updateForm}
+              onChange={updateForm}
               type="date"
               name="event_date"
               id="event_date"
@@ -102,7 +112,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
           </div>
           <div class="relative z-0 w-full mb-6 group">
             <input
-              onChange ={updateForm}
+              onChange={updateForm}
               type="time"
               name="event_time"
               id="event_time"
@@ -117,37 +127,9 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
               Time
             </label>
           </div>
-
-          {showEventLocation && (
-            <div className="relative z-0 w-full mb-6 group">
-              <input
-                onChange ={updateForm}
-                type="text"
-                name="event_location"
-                id="event_location"
-                list="event_location_suggestions"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="event_location"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Location
-              </label>
-              <datalist id="event_location_suggestions">
-                <option value="Firefighters Park" />
-                <option value="America's Got Soccer" />
-                <option value="Betti Stradling Park" />
-                <option value="Mullens Park" />
-                <option value="Cypress Park" />
-              </datalist>
-            </div>
-          )}
           <div class="relative z-0 w-full mb-6 group">
             <input
-              onChange ={updateForm}
+              onChange={updateForm}
               type="text"
               name="event_location"
               id="event_location"
@@ -173,7 +155,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
 
           <div class="relative z-0 w-full mb-6 group">
             <input
-              onChange ={updateForm}
+              onChange={updateForm}
               type="text"
               name="event_address"
               id="event_address"
@@ -192,7 +174,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
           <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
               <input
-                onChange ={updateForm}
+                onChange={updateForm}
                 type="number"
                 name="number_participants"
                 id="number_participants"
@@ -209,7 +191,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
             </div>
             <div class="relative z-0 w-full mb-6 group">
               <input
-                onChange ={updateForm}
+                onChange={updateForm}
                 type="url"
                 name="link_url"
                 id="link_url"
@@ -230,13 +212,8 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
           >
             Submit
           </button>
-          <button
-            type="reset"
-            class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-50% sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-          >
-            Reset
-          </button>
         </form>
+      </div>
       </div>
     </section>
   );
