@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // post to web to show in DB
-export default function HeroCard({ events, setEvents, setCardInfo }) {
-  const [showEventLocation, setShowEventLocation] = useState(false);
-  const handleEventNameChange = (e) => {
-    const inputValue = e.target.value;
-    setShowEventLocation(inputValue.length > 0);
-  };
+export default function HeroCard({ setCardInfo }) {
+ // const [showEventLocation, setShowEventLocation] = useState(false);
 
-  const [eventData, setEventData] = useState({});
+
+  const [eventData, setEventData] = useState({}); //useState hook, sets up piece of state 'eventData', 'setEventData' will update this state
 
   const updateForm = (e) => {
     setEventData({ ...eventData, [e.target.name]: e.target.value });
-  };
+  }; // updates the property that matches the name of the form field
 
   const AddEvent = (e) => {
     e.preventDefault(); // this prevents form info from going into URL
@@ -46,7 +43,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
       .then((data) => {
         setCardInfo(data);
       })
-      .finally(() => {
+      .finally(() => { 
         setEventData();
         e.target.event_name.value = "";
         e.target.event_date.value = "";
@@ -63,7 +60,7 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
 
   return (
     <section className="flex flex-row flex-wrap w-[90%] mx-auto justify-end">
-      <div className="bg-[url('../../public/keep_up.gif')] w-full p-5 my-7 bg-no-repeat bg-cover"> 
+      <div className="bg-[url('../../public/sunset_soccer2.jpg')] bg-bottom bg-cover w-full p-20 my-6 bg-no-repeat rounded-xl"> 
       <div className="max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Create your next event for FREE
@@ -218,31 +215,3 @@ export default function HeroCard({ events, setEvents, setCardInfo }) {
     </section>
   );
 }
-
-/* TRYING TO ADD DELETE BUTTON
-const handleDeleteEvent = async (eventId) => {
-  try {
-    const response = await fetch(`https://final-project-api-lancheros.web.app/events/${eventId}`, {
-      method:"Delete",
-    })
-
-    if (!response.ok) {
-      throw new Error ("Failed to delete the event")
-    }
-    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== eventId))
-  } catch (error) {
-    console.error('Error deleting event:', error)
-  }
-}
-
-const deleteButton = (
-  <button
-    className="text-red-500 hover:text-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-3 py-2.5 text-center"
-    onClick={() => handleDeleteEvent(events)}
-  >
-    Delete
-  </button>
-);
-
-eventElement.appendChild(deleteButton);
-*/
