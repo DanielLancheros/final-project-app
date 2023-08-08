@@ -5,7 +5,7 @@ export default function Header() {
         <a href="https://www.linkedin.com/in/daniel-lancheros/"
             className="flex items-center">
         <img
-              src="/favicon3.ico"
+              src="/Game_On.png"
               className="mr-3 h-60 md:h-60 -mt-12"
               alt="GameOn Logo"
             />          
