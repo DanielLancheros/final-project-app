@@ -213,5 +213,6 @@ export default function HeroCard({ setCardInfo }) {
       </div>
       </div>
     </section>
+    
   );
 }
