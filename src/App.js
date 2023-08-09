@@ -20,6 +20,8 @@ function App() {
     <>
     <PageLayout >
     <CreateEventCard setCardInfo={setCardInfo}/>
+    <div className="text-slate-800 text-4xl flex justify-center font-light">Upcoming Events</div>
+    <br></br>
     {!cardInfo
     ? <p className="text-slate-800 text-3xl">Loading</p>
     : <EventCard cardInfo={cardInfo} />
